@@ -18,13 +18,15 @@ import {
   FeMergeNode,
   Rect
 } from "react-native-svg";
+import { Dimensions } from "react-native";
+const { width } = Dimensions.get("window");
 
 export default function FormBackground(props) {
   return (
     <Svg
-      width={402}
+      width={width}
       height={717}
-      viewBox="0 0 402 717"
+    //   viewBox="0 402 717"
       fill="none"
       {...props} // lets you pass style or dimensions
     >

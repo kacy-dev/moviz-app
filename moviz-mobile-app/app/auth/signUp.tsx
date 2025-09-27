@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { TextInput, Text, StyleSheet, View } from "react-native";
+import { TextInput, Text, StyleSheet, View, Dimensions } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Ionicons } from "@expo/vector-icons";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
 import FormBackground from "../../src/components/FormBackground";
 
+const { width } = Dimensions.get("window");
 
 export default function SignUpScreen() {
+    const [username, setUsername] = useState(false);
     const [email, setEmail] = useState(false);
+    const [password, setPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
     const borderColor = isFocused ? "red" : "#fff";
 
@@ -48,18 +52,39 @@ export default function SignUpScreen() {
                 />
                 */}
 
-                <FormBackground  width="100%"
-        height={400} // only cover form area
-        style={StyleSheet.absoluteFill} />
-
                 <CustomInput 
-                    label="Email"
+                    label="Username"
+                    placeholder="Enter your username"
+                    keyboardType="email-address"
+                    value={username}
+                    onChangeText={setUsername}
+                    iconName={"person-circle-outline"}
+
+                />
+                <CustomInput 
+                    label="Email Address"
                     placeholder="Enter your email"
                     keyboardType="email-address"
                     value={email}
                     onChangeText={setEmail}
-                    iconName="mail-outline"
+                    iconName={"mail-outline"}
 
+                />
+                <CustomInput 
+                    label="Password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChangeText={setPassword}
+                    iconName={"lock-closed-outline"}
+                    secure
+                />
+                <CustomInput 
+                    label="Confirm Password"
+                    placeholder="Re-enter password"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    iconName={"lock-closed-outline"}
+                    secure
                 />
             </View>
         </KeyboardAwareScrollView>
@@ -70,34 +95,14 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         justifyContent: "center",
-        padding: 20,
+        padding: 16,
         backgroundColor: "#121212",
     },
     formContainer: {
         width: "100%",
+        // borderTopColor: "red",
+        // paddingVertical: 10,
+        // borderWidth: 1,
+        // borderRadius: 32,
     },
-    input: {
-        width: "100%",
-        // backgroundColor: "#1E1E1E",
-        color: "#fff",
-        padding: 12,
-        borderRadius: 32,
-        // marginBottom: 16,
-        fontSize: 16,
-        height: 50,
-        borderWidth: 1,
-        paddingLeft: 55,
-    },
-
-    imputWrapper: {
-        position: "relative",
-
-    },
-
-    label: {
-    fontSize: 14,
-    fontFamily: "Sora_600SemiBold", 
-    color: "#FFD700",
-    marginBottom: 6,
-  },
 });

@@ -17,5 +17,5 @@
     "app",
     "components",
     "nativewind-env.d.ts"
-  ]
+, "src/components/CustomText.js", "src/components/CustomInput.js"  ]
 }

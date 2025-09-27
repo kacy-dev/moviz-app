@@ -31,22 +31,28 @@ export default function Index() {
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    if (!showSplash) {
-      setTimeout(async () => {
-        const onboarded = await AsyncStorage.getItem("hasOnboarded");
-        const token = await AsyncStorage.getItem("authToken");
+//   useEffect(() => {
+//     if (!showSplash) {
+//       setTimeout(async () => {
+//         const onboarded = await AsyncStorage.getItem("hasOnboarded");
+//         const token = await AsyncStorage.getItem("authToken");
 
-        if (!onboarded) {
-          router.replace("/onboarding");
-        } else if (!token) {
-          router.replace("/auth/login");
-        } else {
-          router.replace("/(tabs)/home");
-        }
-      }, 2000);
-    }
-  }, [showSplash]);
+//         if (!onboarded) {
+//           router.replace("/onboarding");
+//         } else if (!token) {
+//           router.replace("/auth/login");
+//         } else {
+//           router.replace("/(tabs)/home");
+//         }
+//       }, 2000);
+//     }
+//   }, [showSplash]);
+
+  useEffect(() => {
+      setTimeout(() => {
+        router.replace("/auth/signUp");
+    })
+  },[])
 
   return (
     <View style={{ flex: 1, backgroundColor: "#121212" }}>

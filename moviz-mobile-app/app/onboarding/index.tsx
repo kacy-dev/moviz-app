@@ -121,7 +121,7 @@ export default function Onboarding() {
                         </View>
 
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => router.replace("/auth/login")}>
+                            <TouchableOpacity onPress={() => router.replace("/auth/signUp")}>
                                 <LinearGradient
                                     colors={["#6A0DAD", "#2C0547"]} 
                                     start={{ x: 0, y: 0.5 }}       

@@ -57,7 +57,7 @@ export default function CustomInput({
             style={{ position: "absolute", right: 10, top: 14 }}
           >
             <Ionicons
-              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              name={showPassword ? "eye-outline" : "eye-off-outline"}
               size={20}
               color={iconColor}
             />

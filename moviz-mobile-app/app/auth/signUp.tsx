@@ -3,6 +3,7 @@ import { TextInput, Text, StyleSheet, View, Dimensions, TouchableOpacity, Image 
 import { LinearGradient } from "expo-linear-gradient";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
 import FormBackground from "../../src/components/FormBackground";
@@ -15,6 +16,8 @@ export default function SignUpScreen() {
     const [email, setEmail] = useState(false);
     const [password, setPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState(false);
+
+    const router = useRouter();
 
     return (
         <KeyboardAwareScrollView
@@ -81,7 +84,7 @@ export default function SignUpScreen() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <Text style={styles.buttonText}>Already Have an account? <TouchableOpacity ><Text className="text-[#9B5DC8] text-[16px] relative top-1">Login</Text></TouchableOpacity></Text>
+                <Text style={styles.buttonText}>Already Have an account? <TouchableOpacity onPress={() => router.replace("/auth/login")} ><Text className="text-[#9B5DC8] text-[16px] relative top-1">Login</Text></TouchableOpacity></Text>
 
                 <Divider />
 
@@ -125,12 +128,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     buttonText: {
-        color: "#F0E7F7",
+        color: "#DBD6D6",
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center",
         fontSize: 16,
-        fontWeight: 400,
+        fontWeight: 600,
 
     },
     header: {
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        gap: 7,
+        gap: 2,
     },
     title: {
         fontSize: 9.533,

@@ -1,4 +1,3 @@
-// components/CustomText.js
 import React from "react";
 import { Text } from "react-native";
 

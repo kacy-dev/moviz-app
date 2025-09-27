@@ -1,4 +1,3 @@
-// FormBackground.js
 import React from "react";
 import {
   Svg,
@@ -26,9 +25,9 @@ export default function FormBackground(props) {
     <Svg
       width={width}
       height={717}
-    //   viewBox="0 402 717"
+      viewBox="0 402 717"
       fill="none"
-      {...props} // lets you pass style or dimensions
+      {...props} 
     >
       <G filter="url(#filter0_n_555_1219)">
         <Mask id="path-1-inside-1_555_1219" fill="white">

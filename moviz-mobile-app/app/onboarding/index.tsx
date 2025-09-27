@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: "#000",
-        fontWeight: "bold",
+        fontWeight: 400,
         textAlign: "center",
         fontSize: 16,
     },

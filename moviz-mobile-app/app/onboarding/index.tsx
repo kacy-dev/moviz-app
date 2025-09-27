@@ -13,6 +13,7 @@ import { useRouter } from "expo-router";
 import { center } from "@shopify/react-native-skia";
 
 const { width } = Dimensions.get("window");
+const buttonWidth = width - 32;
 
 const slides = [
     {
@@ -131,7 +132,7 @@ export default function Onboarding() {
                                 </LinearGradient>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={[styles.buttonSecondary, { width }]}
+                                style={[styles.buttonSecondary]}
                                 onPress={() => router.replace("/auth/login")}
                             >
                                 <Text style={styles.buttonText}>Login</Text>
@@ -175,9 +176,10 @@ const styles = StyleSheet.create({
         color: "#fff"
     },
     buttonContainer: {
-        flexDirection: "column",
+        // flexDirection: "column",
         gap: 10,
         // marginBottom: 20,
+        marginHorizontal: 20,
         paddingHorizontal: 50,
     },
     buttonPrimary: {
@@ -187,7 +189,9 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         height: 50,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        width: buttonWidth,
+        marginHorizontal: 0,
     },
     buttonSecondary: {
         backgroundColor: "#F0E7F7",

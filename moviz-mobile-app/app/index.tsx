@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Text, View, Animated, Image, StyleSheet, Dimensions } from "react-native";
+import { Text, View, Animated, Image, StyleSheet, Dimensions, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Canvas, Rect, LinearGradient, vec } from "@shopify/react-native-skia";
@@ -91,7 +91,7 @@ export default function Index() {
             />
             <Text style={styles.title}>MOVIZ</Text>
           </View>
-          <Text style={styles.subtitle}>Unlimited streaming access</Text>
+          <Text style={styles.subtitle}>Discover movies by scenes</Text>
         </View>
       </Animated.View>
     </View>

@@ -6,7 +6,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { Ionicons } from "@expo/vector-icons";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
-import FormBackground from "../../src/components/FormBackground";
 import Divider from "../../src/components/Divider";
 
 const { width } = Dimensions.get("window");
@@ -34,7 +33,7 @@ export default function LoginScreen() {
                     <Text style={styles.title}>MOVIZ</Text>
                 </View>
 
-                <Text style={styles.headerOne}>Create a new Account</Text>
+                <Text style={styles.headerOne}>Login to your account</Text>
                 <Text style={styles.header}>Enter your details to access your account</Text>
 
                 <CustomInput
@@ -44,7 +43,6 @@ export default function LoginScreen() {
                     value={email}
                     onChangeText={setEmail}
                     iconName={"mail-outline"}
-
                 />
                 <CustomInput
                     label="Password"

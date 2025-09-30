@@ -1,19 +1,23 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+
 
 export default function SplashScreen() {
   return (
     <LinearGradient
-      colors={["#FFD700", "#800080", "#FFD700"]}
-      start={{ x: 1, y: 0 }} 
-      end={{ x: 0, y: 1 }}   
-      className="flex-1"
+      colors={["#6A0DAD", "#2C0547"]}
+      start={{ x: 0, y: 0.5 }}
+      end={{ x: 1, y: 0.5 }}
+      // style={styles.button}
     >
-      <View className="flex-1 justify-center items-center">
-        <Text className="text-white text-3xl font-bold">
-          🎬 Hello Splash Screen
-        </Text>
-      </View>
+      <Image source={require("../assets/images/logo.png")}/>
+      <Image source={require("../assets/images/reg-success.png")}/>
+
+      <Text >Acount Creation Successful</Text>
+
+      <TouchableOpacity>
+        <Text>Go To Dashboard</Text>
+      </TouchableOpacity>
     </LinearGradient>
   );
 }

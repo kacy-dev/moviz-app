@@ -22,7 +22,7 @@ const slides = [
         description: [
             { text: "See a scene you love? ", color: "white" },
             { text: "Just scan or ", color: "white" },
-            { text: "Record it", color: "#FFD700" },
+            { text: "Record it", color: "#E8C400" },
         ],
         image: require("../../assets/images/onboarding-image1.png"),
         
@@ -31,7 +31,7 @@ const slides = [
         id: 2,
         title: "MOVIZ instantly identifies films from your clips, even with just a glimpse.",
         description: [
-            { text: "Recognize", color: "#FFD700" },
+            { text: "Recognize", color: "#E8C400" },
             { text: "Movies in ", color: "white" },
             { text: " Seconds", color: "white" },
              
@@ -43,7 +43,7 @@ const slides = [
         id: 3,
         title: "Build your watchlist, explore trending picks, and never lose a movie again.",
         description: [
-            { text: "Save", color: "#FFD700" },
+            { text: "Save", color: "#E8C400" },
             { text: "Movies for Later", color: "white" },
             { text: "and Add Favorites", color: "white" },
 
@@ -153,8 +153,6 @@ const styles = StyleSheet.create({
     image: { flex: 0.9, width: "100%", justifyContent: "flex-end" },
     overlay: { ...StyleSheet.absoluteFillObject, },
     content: {
-        // flex: 1,
-        // flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: 20,
@@ -176,9 +174,7 @@ const styles = StyleSheet.create({
         color: "#fff"
     },
     buttonContainer: {
-        // flexDirection: "column",
         gap: 10,
-        // marginBottom: 20,
         marginHorizontal: 20,
         paddingHorizontal: 50,
     },
@@ -211,7 +207,7 @@ const styles = StyleSheet.create({
     },
     buttonTextOne: {
         color: "#fff",
-        fontWeight: "bold",
+        fontWeight: 400,
         textAlign: "center",
         fontSize: 16,
     },

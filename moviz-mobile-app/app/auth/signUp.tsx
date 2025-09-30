@@ -6,7 +6,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
-import FormBackground from "../../src/components/FormBackground";
 import Divider from "../../src/components/Divider";
 
 const { width } = Dimensions.get("window");

@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import { center } from "@shopify/react-native-skia";
+import { useOnboarding, useAuth } from "../../src/store/hooks";
+const colors = require("../../src/constants/colors");
 
 const { width } = Dimensions.get("window");
 const buttonWidth = width - 32;
@@ -22,7 +24,7 @@ const slides = [
         description: [
             { text: "See a scene you love? ", color: "white" },
             { text: "Just scan or ", color: "white" },
-            { text: "Record it", color: "#E8C400" },
+            { text: "Record it", color: colors.brandYellow },
         ],
         image: require("../../assets/images/onboarding-image1.png"),
         
@@ -31,7 +33,7 @@ const slides = [
         id: 2,
         title: "MOVIZ instantly identifies films from your clips, even with just a glimpse.",
         description: [
-            { text: "Recognize", color: "#E8C400" },
+            { text: "Recognize", color: colors.brandYellow },
             { text: "Movies in ", color: "white" },
             { text: " Seconds", color: "white" },
              
@@ -43,7 +45,7 @@ const slides = [
         id: 3,
         title: "Build your watchlist, explore trending picks, and never lose a movie again.",
         description: [
-            { text: "Save", color: "#E8C400" },
+            { text: "Save", color: colors.brandYellow },
             { text: "Movies for Later", color: "white" },
             { text: "and Add Favorites", color: "white" },
 
@@ -56,6 +58,18 @@ const slides = [
 export default function Onboarding() {
     const router = useRouter();
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const { setHasOnboarded, hasOnboarded } = useOnboarding();
+    const { token } = useAuth();
+
+    // Check on mount if user is already authenticated or has completed onboarding
+    useEffect(() => {
+        if (token) {
+            router.replace('/(tabs)/home');
+        } else if (hasOnboarded) {
+            router.replace('/auth/login');
+        }
+    }, []);
 
     const fadeAnims = useRef(slides.map((_, i) => new Animated.Value(i === 0 ? 1 : 0))).current;
 
@@ -80,6 +94,13 @@ export default function Onboarding() {
 
         return () => clearInterval(interval);
     }, [currentIndex]);
+
+    const handleGetStarted = async () => {
+        // mark onboarding complete in store (persisted)
+        setHasOnboarded(true);
+        // navigate to sign up
+        router.replace("/auth/signupScreen");
+    };
 
     return (
         <View style={styles.container}>
@@ -121,9 +142,9 @@ export default function Onboarding() {
                         </View>
 
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity onPress={() => router.replace("/auth/signUp")}>
+                            <TouchableOpacity onPress={handleGetStarted}>
                                 <LinearGradient
-                                    colors={["#6A0DAD", "#2C0547"]} 
+                                    colors={[colors.purple, colors.purpleDeep]} 
                                     start={{ x: 0, y: 0.5 }}       
                                     end={{ x: 1, y: 0.5 }}         
                                     style={styles.buttonPrimary}   
@@ -148,7 +169,7 @@ export default function Onboarding() {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: "#121212", paddingHorizontal: 20 },
+    container: { flex: 1, backgroundColor: colors.bgDark, paddingHorizontal: 20 },
     slide: { ...StyleSheet.absoluteFillObject, flex: 1 },
     image: { flex: 0.9, width: "100%", justifyContent: "flex-end" },
     overlay: { ...StyleSheet.absoluteFillObject, },
@@ -161,7 +182,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 12,
         fontWeight: 400,
-        color: "#fff",
+        color: colors.textColor,
         textAlign: "left",
         marginBottom: 10
     },
@@ -171,7 +192,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         fontWeight: 600,
         marginBottom: 8,
-        color: "#fff"
+        color: colors.textColor
     },
     buttonContainer: {
         gap: 10,
@@ -179,7 +200,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 50,
     },
     buttonPrimary: {
-        backgroundColor: "#FFD700",
+        backgroundColor: colors.brandYellow,
         paddingVertical: 12,
         paddingHorizontal: 24,
         borderRadius: 25,
@@ -190,7 +211,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 0,
     },
     buttonSecondary: {
-        backgroundColor: "#F0E7F7",
+        backgroundColor: colors.activeInputBorder,
         paddingVertical: 12,
         paddingHorizontal: 24,
         borderRadius: 25,
@@ -206,7 +227,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     buttonTextOne: {
-        color: "#fff",
+        color: colors.textColor,
         fontWeight: 400,
         textAlign: "center",
         fontSize: 16,
@@ -219,7 +240,7 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: "#FFFFFF",
+        backgroundColor: colors.textColor,
         marginHorizontal: 4
     },
 });

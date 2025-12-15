@@ -7,6 +7,9 @@ import { useRouter } from "expo-router";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
 import Divider from "../../src/components/Divider";
+import LoadingOverlay from "../../src/components/LoadingOverlay";
+import { useAuth, useOnboarding } from "../../src/store/hooks";
+const colors = require("../../src/constants/colors");
 
 const { width } = Dimensions.get("window");
 
@@ -17,12 +20,30 @@ export default function SignUpScreen() {
     const [confirmPassword, setConfirmPassword] = useState(false);
 
     const router = useRouter();
+    const { login, setLoading, setError, isLoading } = useAuth();
+    const { setHasOnboarded } = useOnboarding();
+
+    const handleCreateAccount = async () => {
+        try {
+            setLoading(true);
+            // TODO: replace with real signup API call
+            const newUser = { id: 'local', username: username || 'NewUser', email: email || '' };
+            // persist user session, then take user to genre preference step
+            login('demo-token', newUser);
+            router.replace('/genrePreferenceScreen');
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Signup failed');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <KeyboardAwareScrollView
             contentContainerStyle={styles.scrollContainer}
             enableOnAndroid={true}
         >
+            <LoadingOverlay visible={isLoading} />
             <View style={styles.formContainer}>
 
                 <View style={styles.subtitleWrapper}>
@@ -72,7 +93,7 @@ export default function SignUpScreen() {
 
                 <Text className="text-[#F0E7F7] leading-normal">By clicking 'Create account', you're agreeing to our <Text className="text-[#E8BA00]">Terms & Conditions</Text> and Privacy Policy</Text>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleCreateAccount}>
                     <LinearGradient
                         colors={["#6A0DAD", "#2C0547"]}
                         start={{ x: 0, y: 0.5 }}
@@ -98,6 +119,7 @@ export default function SignUpScreen() {
                 </TouchableOpacity>
 
 
+
             </View>
         </KeyboardAwareScrollView>
     );
@@ -108,7 +130,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: "center",
         padding: 16,
-        backgroundColor: "#121212",
+        backgroundColor: colors.bgDark,
     },
     formContainer: {
         width: "100%",
@@ -127,7 +149,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     buttonText: {
-        color: "#DBD6D6",
+        color: colors.submitText,
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center",
@@ -136,7 +158,7 @@ const styles = StyleSheet.create({
 
     },
     header: {
-        color: "#F0E7F7",
+        color: colors.activeInputBorder,
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center",
@@ -157,11 +179,11 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 9.533,
         fontWeight: 600,
-        color: "#E8C400",
+        color: colors.brandYellow,
     },
     subtitle: {
         fontSize: 16,
-        color: "#EFE6FD",
+        color: colors.muted,
         marginTop: 8,
         fontWeight: "400",
         letterSpacing: -0.32,
@@ -171,4 +193,12 @@ const styles = StyleSheet.create({
         width: 24.703,
         height: 20.555,
     },
+
+    lastBtn: {
+        height: 35,
+        width: width,
+        backgroundColor: "#fff",
+        borderRadius: 100,
+        textAlign: "center",
+    }
 });

@@ -70,7 +70,7 @@ export default function CustomInput({
 
 const styles = StyleSheet.create({
   inputWrapper: {
-    marginBottom: 16,
+    marginBottom: 10,
     width: "100%",
   },
   label: {
@@ -86,8 +86,10 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 32,
     borderWidth: 1,
-    fontSize: 16,
+    fontSize: 14,
     height: 50,
+    fontWeight: 400,
+    
   },
 });
 

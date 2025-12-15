@@ -1,0 +1,20 @@
+module.exports = {
+  brandYellow: '#FFD700',
+  errorRed: '#B53737',
+  muted: '#EFE6FD',
+  textColor: '#FFFFFF',
+  inputBg: '#1b1b1b',
+  activeInputBorder: '#F0E7F7',
+  gray: '#8A8A8A',
+  backBtnColor: '#9E89AD80',
+  inputBorder: '#2f2f2f',
+  submitText: '#DBD6D6',
+  link: '#9B5DC8',
+  purple: '#6A0DAD',
+  purpleDeep: '#2C0547',
+  inactive: '#8C8C8C',
+  bgDark: '#121212',
+  bgDeep: '#15051f',
+  generalMute: "#F3F2F2B2",
+  
+};

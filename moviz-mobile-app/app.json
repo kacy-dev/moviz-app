@@ -8,9 +8,18 @@
     "scheme": "movizmobileapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Moviz needs camera access to scan scenes, posters and discover movie information.",
+        "NSMicrophoneUsageDescription": "Moviz needs microphone access for voice-based movie search.",
+        "NSLocationWhenInUseUsageDescription": "Moviz needs your location to show movies and cinemas near you.",
+        "NSPhotoLibraryUsageDescription": "Moviz needs access to your media library to pick images for movie search.",
+        "NSPhotoLibraryAddUsageDescription": "Moviz needs permission to save captured frames or scene snapshots."
+      }
     },
+
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
@@ -19,14 +28,25 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
+
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+
     "plugins": [
       "expo-router",
+
       [
         "expo-splash-screen",
         {
@@ -34,26 +54,43 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
+          "dark": { "backgroundColor": "#000000" }
         }
       ],
-      "expo-font"
+
+      "expo-font",
+
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Moviz needs access to your camera to scan scenes and identify movie content."
+        }
+      ],
+
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Moviz needs your location to show nearby cinemas and improve search results."
+        }
+      ]
     ],
+
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
+
     "extra": {
       "router": {},
       "eas": {
         "projectId": "130ae09d-ae80-4bac-b66f-8ea6ffe363dd"
       }
     },
+
     "runtimeVersion": {
       "policy": "appVersion"
     },
+
     "updates": {
       "url": "https://u.expo.dev/130ae09d-ae80-4bac-b66f-8ea6ffe363dd"
     }

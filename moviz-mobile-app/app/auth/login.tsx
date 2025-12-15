@@ -7,6 +7,9 @@ import { Ionicons } from "@expo/vector-icons";
 import "../../global.css";
 import CustomInput from "../../src/components/CustomInput";
 import Divider from "../../src/components/Divider";
+import LoadingOverlay from "../../src/components/LoadingOverlay";
+import { useAuth } from "../../src/store/hooks";
+const colors = require("../../src/constants/colors");
 
 const { width } = Dimensions.get("window");
 
@@ -17,12 +20,28 @@ export default function LoginScreen() {
     const [confirmPassword, setConfirmPassword] = useState(false);
 
     const router = useRouter();
+    const { login, setLoading, setError, isLoading } = useAuth();
+
+    const handleLogin = async () => {
+        try {
+            setLoading(true);
+            // TODO: replace with real API call
+            const demoUser = { id: 'local', username: 'Demo', email: '' };
+            login('demo-token', demoUser);
+            router.replace('/auth/successScreen');
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Login failed');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <KeyboardAwareScrollView
             contentContainerStyle={styles.scrollContainer}
             enableOnAndroid={true}
         >
+            <LoadingOverlay visible={isLoading} />
             <View style={styles.formContainer}>
 
                 <View style={styles.subtitleWrapper}>
@@ -53,13 +72,13 @@ export default function LoginScreen() {
                     secure
                 />
 
-                <TouchableOpacity>
-                    <Text className="text-[#E8BA00]" style={styles.fgtPassword}>Forgot password?</Text>
+                <TouchableOpacity onPress={() => router.push('/auth/forgotPassword')}>
+                    <Text style={[styles.fgtPassword, { color: colors.brandYellow }]}>Forgot password?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleLogin}>
                     <LinearGradient
-                        colors={["#6A0DAD", "#2C0547"]}
+                        colors={[colors.purple, colors.purpleDeep]}
                         start={{ x: 0, y: 0.5 }}
                         end={{ x: 1, y: 0.5 }}
                         style={styles.button}
@@ -68,16 +87,16 @@ export default function LoginScreen() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <Text style={styles.buttonText}>No account yet? <TouchableOpacity onPress={() => router.replace("/auth/signUp")} ><Text className="text-[#9B5DC8] text-[16px] relative top-1">Create an account</Text></TouchableOpacity></Text>
+                <Text style={styles.buttonText}>No account yet? <TouchableOpacity onPress={() => router.replace("/auth/signUp")} ><Text style={{ color: colors.link, fontSize: 16 }}>Create an account</Text></TouchableOpacity></Text>
 
                 <Divider />
 
-                <TouchableOpacity className="flex-row justify-center items-center gap-2 bg-[#F0E7F7]" style={styles.optButton}>
+                <TouchableOpacity style={[styles.optButton, { backgroundColor: colors.activeInputBorder }]}>
                     <Image source={require("../../assets/images/google.png")} />
                     <Text>Sign up with Google</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity className="flex-row justify-center items-center gap-2 bg-[#F0E7F7] mt-4" style={styles.optButton}>
+                <TouchableOpacity style={[styles.optButton, { backgroundColor: colors.activeInputBorder, marginTop: 16 }]}>
                     <Image source={require("../../assets/images/Apple.png")} />
                     <Text>Sign up with Apple</Text>
                 </TouchableOpacity>
@@ -93,7 +112,7 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: "center",
         padding: 16,
-        backgroundColor: "#121212",
+        backgroundColor: colors.bgDark,
     },
     formContainer: {
         width: "100%",
@@ -112,7 +131,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     buttonText: {
-        color: "#DBD6D6",
+        color: colors.submitText,
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center",
@@ -121,7 +140,7 @@ const styles = StyleSheet.create({
 
     },
     header: {
-        color: "#F0E7F7",
+        color: colors.brandYellow,
         textAlign: "left",
         justifyContent: "center",
         alignItems: "center",
@@ -132,7 +151,7 @@ const styles = StyleSheet.create({
         letterSpacing: -0.4,
     },
     headerOne: {
-        color: "#F0E7F7",
+        color: colors.brandYellow,
         textAlign: "left",
         justifyContent: "center",
         alignItems: "center",
@@ -153,11 +172,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 9.533,
         fontWeight: 600,
-        color: "#E8C400",
+        color: colors.brandYellow,
     },
     subtitle: {
-        fontSize: 16,
-        color: "#EFE6FD",
+        color: colors.muted,
         marginTop: 8,
         fontWeight: "400",
         letterSpacing: -0.32,

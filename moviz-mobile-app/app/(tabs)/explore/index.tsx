@@ -386,7 +386,7 @@ export default function Index() {
 
               <TouchableOpacity
                 style={styles.favoriteBtn}
-                onPress={() => router.push("/favoritesScreen")}
+                onPress={() => router.push("/(tabs)/explore/favoritesScreen")}
               >
                 <Ionicons name="bookmark-outline" size={22} color="#8C8C8C" />
               </TouchableOpacity>
@@ -445,7 +445,7 @@ export default function Index() {
             {/* Trending Movies Header */}
             <View style={styles.sectionHeader}>
               <TextInter style={styles.sectionTitle}>Trending Movies</TextInter>
-              <TouchableOpacity onPress={() => router.push("/trendingMoviesScreen")}>
+              <TouchableOpacity onPress={() => router.push("/(tabs)/explore/trendingMoviesScreen")}>
                 <TextInter style={styles.seeAll}>See all</TextInter>
               </TouchableOpacity>
             </View>
@@ -467,7 +467,7 @@ export default function Index() {
             {/* Recent Header */}
             <View style={[styles.sectionHeader, { marginBottom: 10 }]}>
               <TextInter style={styles.sectionTitle}>Recent</TextInter>
-              <TouchableOpacity onPress={() => router.push("/recentMoviesScreen")}>
+              <TouchableOpacity onPress={() => router.push("/(tabs)/explore/recentSearchScreen")}>
                 <TextInter style={styles.seeAll}>See all</TextInter>
               </TouchableOpacity>
             </View>

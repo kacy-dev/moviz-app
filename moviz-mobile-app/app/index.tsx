@@ -58,7 +58,7 @@ export default function Index() {
                 router.replace("/auth/loginScreen");
             } else {
                 // User is authenticated - show home
-                router.replace("/(tabs)/explore");
+                router.replace("/(tabs)/home");
             }
         }
     }, [showSplash, isHydrated, hasOnboarded, token, router]);

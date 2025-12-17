@@ -19,7 +19,7 @@ export default function HeaderNav({ headerTitle, router }) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 80,
+        marginTop: 50,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",

@@ -45,6 +45,15 @@ const GENRES = [
   "Fantasy",
 ];
 
+// const GENRES = [
+//   { key: "action", label: "Action", bg: "#600E0E", border: colors.textColor },
+//   { key: "thriller", label: "Thriller", bg: colors.bgDark, border: "#FFDF3380" },
+//   { key: "horror", label: "Horror", bg: colors.bgDark, border: "#4CAF5080" },
+//   { key: "adventure", label: "Adventure", bg: "#44212A", border: "#D9770680" },
+//   { key: "romance", label: "Romance", bg: "rgba(155, 93, 200, 0.50)", border: "#9B5DC880" },
+//   { key: "comedy", label: "Comedy", bg: "#1A1A1A", border: "#EF4444" },
+// ];
+
 const SORT_OPTIONS = ["Most Popular", "Most Rated", "Newest"];
 const YEAR_OPTIONS = ["2022 - 2025", "2018 - 2025", "2015 - 2025"];
 

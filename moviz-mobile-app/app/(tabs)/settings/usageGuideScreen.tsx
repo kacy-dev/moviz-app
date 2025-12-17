@@ -89,7 +89,7 @@ export default function UsageGuideScreen() {
                 ))}
 
                 <TextPoppins style={{
-                    color: "#E6E6E6B2",
+                    color: "#969696",
                     fontSize: 12,
                     lineHeight: 18,
                     fontWeight: 600,

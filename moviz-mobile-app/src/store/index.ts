@@ -422,27 +422,158 @@ export const useUIStore = create<UIState>()(
 );
 
 // ==================== Search/Filter Store ====================
+// export interface SearchState {
+//   searchQuery: string;
+//   filters: {
+//     genre?: string[];
+//     rating?: number;
+//     year?: number;
+//   };
+//   setSearchQuery: (query: string) => void;
+//   setFilters: (filters: SearchState['filters']) => void;
+//   clearFilters: () => void;
+// }
+
+// export const useSearchStore = create<SearchState>()(
+//   devtools(
+//     (set) => ({
+//       searchQuery: '',
+//       filters: {},
+//       setSearchQuery: (searchQuery) => set({ searchQuery }),
+//       setFilters: (filters) => set({ filters }),
+//       clearFilters: () => set({ filters: {} }),
+//     }),
+//     { name: 'SearchStore' }
+//   )
+// );
+
+
+export interface SearchFilters {
+  genres: string[];
+  type: "all" | "movie" | "person";
+  sortBy?: "Most Popular" | "Newest" | "Highest Rated";
+  year?: number;
+  rating?: number;
+}
+
 export interface SearchState {
   searchQuery: string;
-  filters: {
-    genre?: string[];
-    rating?: number;
-    year?: number;
-  };
+  filters: SearchFilters;
+
   setSearchQuery: (query: string) => void;
-  setFilters: (filters: SearchState['filters']) => void;
+  setFilters: (filters: Partial<SearchFilters>) => void;
   clearFilters: () => void;
+  resetAll: () => void;
 }
 
 export const useSearchStore = create<SearchState>()(
-  devtools(
-    (set) => ({
-      searchQuery: '',
-      filters: {},
+  persist(
+    devtools((set) => ({
+      searchQuery: "",
+      filters: {
+        genres: [],
+        type: "all",
+      },
+
       setSearchQuery: (searchQuery) => set({ searchQuery }),
-      setFilters: (filters) => set({ filters }),
-      clearFilters: () => set({ filters: {} }),
-    }),
-    { name: 'SearchStore' }
+
+      setFilters: (filters) =>
+        set((state) => ({
+          filters: {
+            ...state.filters,
+            ...filters,
+          },
+        })),
+
+      clearFilters: () =>
+        set((state) => ({
+          filters: {
+            ...state.filters,
+            genres: [],
+            sortBy: undefined,
+            year: undefined,
+            rating: undefined,
+          },
+        })),
+
+      resetAll: () =>
+        set({
+          searchQuery: "",
+          filters: {
+            genres: [],
+            type: "all",
+          },
+        }),
+    })),
+    { name: "search-store" }
   )
 );
+
+
+// export interface SearchFilters {
+//   genres: string[];
+//   type: "all" | "movie" | "person";
+//   sortBy?: "Most Popular" | "Newest" | "Highest Rated";
+//   year?: number;
+//   rating?: number;
+// }
+
+// export interface SearchState {
+//   searchQuery: string;
+//   filters: SearchFilters;
+
+//   setSearchQuery: (query: string) => void;
+//   setFilters: (filters: Partial<SearchFilters>) => void;
+//   clearFilters: () => void;
+//   resetAll: () => void;
+// }
+
+// export const useSearchStore = create<SearchState>()(
+//   persist(
+//     devtools(
+//       (set) => ({
+//         searchQuery: "",
+//         filters: {
+//           genres: [],
+//           type: "all",
+//         },
+
+//         setSearchQuery: (searchQuery) => set({ searchQuery }),
+
+//         setFilters: (filters) =>
+//           set((state) => ({
+//             filters: {
+//               ...state.filters,
+//               ...filters,
+//             },
+//           })),
+
+//         clearFilters: () =>
+//           set((state) => ({
+//             filters: {
+//               ...state.filters,
+//               genres: [],
+//               sortBy: undefined,
+//               year: undefined,
+//               rating: undefined,
+//             },
+//           })),
+
+//         resetAll: () =>
+//           set({
+//             searchQuery: "",
+//             filters: {
+//               genres: [],
+//               type: "all",
+//             },
+//           }),
+//       }),
+//       { name: "SearchStore" }
+//     ),
+//     {
+//       name: "search-store",
+//       storage: createJSONStorage(() => AsyncStorage),
+//       skipHydration: true, 
+//     }
+//   )
+// );

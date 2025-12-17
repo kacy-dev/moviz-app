@@ -1,31 +1,8 @@
-// import { Stack } from "expo-router";
-
-
-// export default function RootLayout() {
-//   return (
-//     // Root stack handles global screens and top-level flows. Keep splash first so
-//     // it acts as the initial entry point, then onboarding/auth flows, and
-//     // finally the main `(tabs)` group as the primary app area.
-//     <Stack screenOptions={{ headerShown: false }}>
-//       {/* Splash / boot loader (first shown) */}
-//       <Stack.Screen name="index" />
-
-//       {/* Onboarding flow can live here (optional). Auth is now a grouped layout */}
-//       <Stack.Screen name="onboarding/index" />
-
-//       {/* Auth group (login, signup, OTP, password reset) */}
-//       <Stack.Screen name="auth" options={{ headerShown: false }} />
-
-//       {/* Main tabbed application. Each tab can provide its own nested Stack layout. */}
-//       <Stack.Screen name="(tabs)" />
-//     </Stack>
-//   );
-// }
-
 
 import React from "react";
 import { Text, TextProps, TextStyle } from "react-native";
 import { Stack } from "expo-router";
+import { PaperProvider } from "react-native-paper";
 import { useFonts } from "expo-font";
 import {
   Sora_400Regular,
@@ -120,15 +97,17 @@ export default function RootLayout() {
     GentiumPlus_700Bold,
   });
 
-  if (!fontsLoaded) return null; 
+  if (!fontsLoaded) return null;
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="onboarding/index" />
-      <Stack.Screen name="auth" />
-      <Stack.Screen name="(tabs)" />
-    </Stack>
+    <PaperProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="onboarding/index" />
+        <Stack.Screen name="auth" />
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </PaperProvider>
   );
 }
 

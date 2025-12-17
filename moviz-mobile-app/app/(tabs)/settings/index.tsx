@@ -87,17 +87,17 @@ export default function Index() {
       <ScrollView style={styles.subContainer}>
         <View>
 
-          <LinearGradient colors={[colors.purple, colors.brandYellow]}
+          <LinearGradient colors={[colors.brandRed, colors.purple]}
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 0 }}
             style={styles.planBanner}
           >
             <Image source={require("../../../assets/images/Group 13 (1).png")} />
-            <View>
+            <View style={{width: 170}}>
               <TextPacifico style={styles.planTitle}>
                 Get MOVIZ Premium ⚡
               </TextPacifico>
-              <TextPoppins style={{ color: colors.textColor, marginTop: 12, }}>
+              <TextPoppins style={{ color: colors.textColor, marginTop: 12}}>
                 Unlimited recognitions. No ads. Just pure movie Magic
               </TextPoppins>
             </View>
@@ -139,7 +139,6 @@ export default function Index() {
             </TouchableOpacity>
 
             <TextPoppins style={{ color: colors.textColor, textAlign: "center" }}>Version 1.0.0</TextPoppins>
-
 
             <Modal
               isVisible={showLogoutModal}
@@ -192,11 +191,13 @@ export default function Index() {
                       flex: 1,
                       padding: 14,
                       borderRadius: 8,
-                      backgroundColor: "#F0E7F7",
+                      backgroundColor: "transparent",
                       alignItems: "center",
+                      borderWidth: 1,
+                      borderColor: colors.textColor
                     }}
                   >
-                    <Text style={{ color: "#121212" }}>Cancel</Text>
+                    <Text style={{ color: colors.textColor, fontSize: 16, fontWeight: 500 }}>Cancel</Text>
                   </TouchableOpacity>
 
                   <TouchableOpacity
@@ -209,7 +210,7 @@ export default function Index() {
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ color: "#FFF" }}>Logout</Text>
+                    <Text style={{ color: colors.textColor, fontSize: 16, fontWeight: 500 }}>Yes, Log out</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -249,12 +250,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: width - 30,
-    height: 116,
-    paddingHorizontal: 90,
+    // width: width - 30,
+    // height: 116,
+    padding: 10,
     borderRadius: 16,
     gap: 16,
-    marginTop: 27,
+    // marginTop: 27,
+    width: Dimensions.get("window").width - 30,
   },
   actionBtn: {
     backgroundColor: colors.textColor,

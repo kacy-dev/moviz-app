@@ -162,14 +162,12 @@ export default function PremuimGoScreen() {
                         </TouchableOpacity>
                     </ScrollView>
                     <View style={{flexDirection: "row", justifyContent: "center", gap: 27, marginBottom: 37}}>
-                        <TouchableOpacity>
-                            <TextPoppins style={{color: colors.generalMute}}>Privacy</TextPoppins>
-                        </TouchableOpacity>
+                        
                         <TouchableOpacity>
                             <TextPoppins style={{color: colors.generalMute}}>RestorePurchase</TextPoppins>
                         </TouchableOpacity>
                         <TouchableOpacity>
-                            <TextPoppins style={{color: colors.generalMute}}>Privacy Policy</TextPoppins>
+                            <TextPoppins style={{color: colors.generalMute}} onPress={() => router.push("/privacyPolicyScreen")}>Privacy Policy</TextPoppins>
                         </TouchableOpacity>
                     </View>
                 </View>

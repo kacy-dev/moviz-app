@@ -5,6 +5,7 @@ export default function ExploreStack() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="detailScreen" options={{ headerShown: false }} />
+      <Stack.Screen name="searchScreen" options={{ headerShown: false }} />
     </Stack>
   );
 }

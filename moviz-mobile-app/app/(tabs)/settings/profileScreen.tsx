@@ -1,42 +1,3 @@
-// import React from 'react';
-// import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-// import { useRouter } from 'expo-router';
-// const colors = require("@/src/constants/colors");
-// import HeaderNav from "@/src/components/HeaderNav";
-
-
-// export default function ProfileScreen() {
-
-//     const router = useRouter();
-
-//     return (
-//         <View style={styles.container}>
-//             <HeaderNav headerTitle={"Profile"} router={() => router.back()} />
-
-//             <ScrollView>
-//                 <Text style={styles.title}>Home</Text>
-//                 <TouchableOpacity onPress={() => router.push("/(tabs)/home")}>
-//                     <Text>Go to Profile</Text>
-//                 </TouchableOpacity>
-
-//             </ScrollView>
-//         </View>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         // alignItems: 'center',
-//         backgroundColor: '#121212'
-//     },
-//     title: {
-//         fontSize: 22,
-//         color: '#E8C400',
-//         fontWeight: '700'
-//     },
-// });
 
 import React, { useState, useEffect } from "react";
 import {
@@ -185,7 +146,7 @@ export default function ProfileScreen() {
                         colors={
                             hasChanges
                                 ? [colors.purple, colors.purple]
-                                : ["#8C8C8C", "#8C8C8C"]
+                                : [colors.purple, colors.purple]
                         }
                         start={{ x: 0, y: 0.5 }}
                         end={{ x: 1, y: 0.5 }}

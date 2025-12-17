@@ -122,13 +122,10 @@ export default function ChangePasswordScreen() {
                     disabled={!isFormValid}
                     onPress={handleChangePassword}
                     activeOpacity={0.8}
+                    style={{ opacity: isFormValid ? 1 : 0.4 }} // 👈 controls faded state
                 >
                     <LinearGradient
-                        colors={
-                            isFormValid
-                                ? [colors.purple, colors.purple]
-                                : ["#8C8C8C", "#8C8C8C"]
-                        }
+                        colors={[colors.purple, colors.purple]}
                         start={{ x: 0, y: 0.5 }}
                         end={{ x: 1, y: 0.5 }}
                         style={styles.button}
@@ -136,6 +133,7 @@ export default function ChangePasswordScreen() {
                         <Text style={styles.buttonText}>Change Password</Text>
                     </LinearGradient>
                 </TouchableOpacity>
+
             </View>
 
             <TextSora

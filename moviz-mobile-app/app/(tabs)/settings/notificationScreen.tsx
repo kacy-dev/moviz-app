@@ -84,6 +84,7 @@ export default function NotificationScreen() {
                                         fontSize: 12,
                                         marginTop: 6,
                                         lineHeight: 18,
+                                        maxWidth: 260
                                     }}
                                 >
                                     {item.description}
@@ -93,10 +94,10 @@ export default function NotificationScreen() {
                             <Switch
                                 value={settings[item.key]}
                                 onValueChange={() => toggle(item.key)}
-                                trackColor={{ false: "#DCBDF380", true: "#DCBDF380" }}
-                                thumbColor={colors.purple}
+                                trackColor={{ false: "rgba(120, 120, 128, 0.32)", true: "#32D74B" }}
+                                thumbColor={colors.textColor}
                                 style={{
-                                    transform: [{ scaleX: 0.65 }, { scaleY: 0.60}],
+                                    transform: [{ scaleX: 0.80 }, { scaleY: 0.80}],
                                 }}
                             />
                         </View>
@@ -106,13 +107,13 @@ export default function NotificationScreen() {
 
                 <TextPoppins style={{
                     color: "#E6E6E6B2",
-                    fontSize: 12,
+                    fontSize: 14,
                     lineHeight: 18,
                     fontWeight: 600,
                     marginTop: 24,
                     alignSelf: "center",
                     textAlign: "center",
-                    maxWidth: 200,
+                    maxWidth: 230,
                 }}>
                     You can change these anytime in your device settings
                 </TextPoppins>

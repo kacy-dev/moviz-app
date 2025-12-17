@@ -1,5 +1,6 @@
 module.exports = {
   brandYellow: '#FFD700',
+  brandRed: '#FF4D4D',
   errorRed: '#B53737',
   muted: '#EFE6FD',
   textColor: '#FFFFFF',

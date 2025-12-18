@@ -1,9 +1,157 @@
 
+// import React from "react";
+// import { Text, TextProps, TextStyle } from "react-native";
+// import { Stack } from "expo-router";
+// import { PaperProvider } from "react-native-paper";
+// import { useFonts } from "expo-font";
+// import {
+//   Sora_400Regular,
+//   Sora_700Bold,
+// } from "@expo-google-fonts/sora";
+// import {
+//   Poppins_400Regular,
+//   Poppins_600SemiBold,
+//   Poppins_700Bold,
+// } from "@expo-google-fonts/poppins";
+// import { Pacifico_400Regular } from "@expo-google-fonts/pacifico";
+// import {
+//   Inter_400Regular,
+//   Inter_500Medium,
+//   Inter_700Bold,
+// } from "@expo-google-fonts/inter";
+// import {
+//   GentiumPlus_400Regular,
+//   GentiumPlus_700Bold,
+// } from "@expo-google-fonts/gentium-plus";
+// import {
+//   CrimsonText_400Regular,
+//   CrimsonText_400Regular_Italic,
+//   CrimsonText_600SemiBold,
+//   CrimsonText_700Bold,
+// } from "@expo-google-fonts/crimson-text";
+
+
+// const SORA_FONTS: Record<string, string> = {
+//   regular: "Sora_400Regular",
+//   bold: "Sora_700Bold",
+// };
+
+// const POPPINS_FONTS: Record<string, string> = {
+//   regular: "Poppins_400Regular",
+//   semiBold: "Poppins_600SemiBold",
+//   bold: "Poppins_700Bold",
+// };
+
+// const PACIFICO_FONTS: Record<string, string> = {
+//   regular: "Pacifico_400Regular",
+// };
+
+// const INTER_FONTS: Record<string, string> = {
+//   regular: "Inter_400Regular",
+//   medium: "Inter_500Medium",
+//   bold: "Inter_700Bold",
+// };
+
+// const GENTIUM_FONTS: Record<string, string> = {
+//   regular: "GentiumPlus_400Regular",
+//   bold: "GentiumPlus_700Bold",
+// };
+
+// const CRIMSON_FONTS: Record<string, string> = {
+//   regular: "CrimsonText_400Regular",
+//   italic: "CrimsonText_400Regular_Italic",
+//   semiBold: "CrimsonText_600SemiBold",
+//   bold: "CrimsonText_700Bold",
+// };
+
+
+
+// interface FontProps extends TextProps {
+//   weight?: "regular" | "semiBold" | "medium" | "bold";
+// }
+
+
+// export const TextSora: React.FC<FontProps> = ({ style, weight = "regular", children, ...props }) => {
+//   const fontFamily = SORA_FONTS[weight] || SORA_FONTS.regular;
+//   return <Text {...props} style={[{ fontFamily } as TextStyle, style]}>{children}</Text>;
+// };
+
+// export const TextPoppins: React.FC<FontProps> = ({ style, weight = "regular", children, ...props }) => {
+//   const fontFamily = POPPINS_FONTS[weight] || POPPINS_FONTS.regular;
+//   return <Text {...props} style={[{ fontFamily } as TextStyle, style]}>{children}</Text>;
+// };
+
+// export const TextPacifico: React.FC<FontProps> = ({ style, children, ...props }) => {
+//   return <Text {...props} style={[{ fontFamily: PACIFICO_FONTS.regular } as TextStyle, style]}>{children}</Text>;
+// };
+
+// export const TextInter: React.FC<FontProps> = ({ style, weight = "regular", children, ...props }) => {
+//   const fontFamily = INTER_FONTS[weight] || INTER_FONTS.regular;
+//   return <Text {...props} style={[{ fontFamily } as TextStyle, style]}>{children}</Text>;
+// };
+
+// export const TextGentiumPlus: React.FC<FontProps> = ({ style, weight = "regular", children, ...props }) => {
+//   const fontFamily = GENTIUM_FONTS[weight] || GENTIUM_FONTS.regular;
+//   return <Text {...props} style={[{ fontFamily } as TextStyle, style]}>{children}</Text>;
+// };
+
+// export const TextCrimson: React.FC<FontProps> = ({
+//   style,
+//   weight = "regular",
+//   children,
+//   ...props
+// }) => {
+//   const fontFamily = CRIMSON_FONTS[weight] || CRIMSON_FONTS.regular;
+
+//   return (
+//     <Text {...props} style={[{ fontFamily } as TextStyle, style]}>
+//       {children}
+//     </Text>
+//   );
+// };
+
+
+
+// export default function RootLayout() {
+//   const [fontsLoaded] = useFonts({
+//     Sora_400Regular,
+//     Sora_700Bold,
+//     Poppins_400Regular,
+//     Poppins_600SemiBold,
+//     Poppins_700Bold,
+//     Pacifico_400Regular,
+//     Inter_400Regular,
+//     Inter_500Medium,
+//     Inter_700Bold,
+//     GentiumPlus_400Regular,
+//     GentiumPlus_700Bold,
+//     CrimsonText_400Regular,
+//     CrimsonText_400Regular_Italic,
+//     CrimsonText_600SemiBold,
+//     CrimsonText_700Bold,
+//   });
+
+//   if (!fontsLoaded) return null;
+
+//   return (
+//     <PaperProvider>
+//       <Stack screenOptions={{ headerShown: false }}>
+//         <Stack.Screen name="index" />
+//         <Stack.Screen name="onboarding/index" />
+//         <Stack.Screen name="auth" />
+//         <Stack.Screen name="(tabs)" />
+//       </Stack>
+//     </PaperProvider>
+//   );
+// }
+
+
 import React from "react";
-import { Text, TextProps, TextStyle } from "react-native";
+import { Text, TextProps, TextStyle, StyleSheet } from "react-native";
 import { Stack } from "expo-router";
 import { PaperProvider } from "react-native-paper";
 import { useFonts } from "expo-font";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   Sora_400Regular,
   Sora_700Bold,
@@ -23,7 +171,12 @@ import {
   GentiumPlus_400Regular,
   GentiumPlus_700Bold,
 } from "@expo-google-fonts/gentium-plus";
-
+import {
+  CrimsonText_400Regular,
+  CrimsonText_400Regular_Italic,
+  CrimsonText_600SemiBold,
+  CrimsonText_700Bold,
+} from "@expo-google-fonts/crimson-text";
 
 const SORA_FONTS: Record<string, string> = {
   regular: "Sora_400Regular",
@@ -51,11 +204,16 @@ const GENTIUM_FONTS: Record<string, string> = {
   bold: "GentiumPlus_700Bold",
 };
 
+const CRIMSON_FONTS: Record<string, string> = {
+  regular: "CrimsonText_400Regular",
+  italic: "CrimsonText_400Regular_Italic",
+  semiBold: "CrimsonText_600SemiBold",
+  bold: "CrimsonText_700Bold",
+};
 
 interface FontProps extends TextProps {
   weight?: "regular" | "semiBold" | "medium" | "bold";
 }
-
 
 export const TextSora: React.FC<FontProps> = ({ style, weight = "regular", children, ...props }) => {
   const fontFamily = SORA_FONTS[weight] || SORA_FONTS.regular;
@@ -81,6 +239,20 @@ export const TextGentiumPlus: React.FC<FontProps> = ({ style, weight = "regular"
   return <Text {...props} style={[{ fontFamily } as TextStyle, style]}>{children}</Text>;
 };
 
+export const TextCrimson: React.FC<FontProps> = ({
+  style,
+  weight = "regular",
+  children,
+  ...props
+}) => {
+  const fontFamily = CRIMSON_FONTS[weight] || CRIMSON_FONTS.regular;
+
+  return (
+    <Text {...props} style={[{ fontFamily } as TextStyle, style]}>
+      {children}
+    </Text>
+  );
+};
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -95,19 +267,30 @@ export default function RootLayout() {
     Inter_700Bold,
     GentiumPlus_400Regular,
     GentiumPlus_700Bold,
+    CrimsonText_400Regular,
+    CrimsonText_400Regular_Italic,
+    CrimsonText_600SemiBold,
+    CrimsonText_700Bold,
   });
 
   if (!fontsLoaded) return null;
 
   return (
-    <PaperProvider>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="onboarding/index" />
-        <Stack.Screen name="auth" />
-        <Stack.Screen name="(tabs)" />
-      </Stack>
-    </PaperProvider>
+    <GestureHandlerRootView style={styles.container}>
+      <PaperProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="onboarding/index" />
+          <Stack.Screen name="auth" />
+          <Stack.Screen name="(tabs)" />
+        </Stack>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

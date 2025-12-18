@@ -187,149 +187,149 @@ export default function GenrePreferenceScreen() {
   };
 
   // Permission Request Screen
-  if (showPermissions) {
-    return (
-      <View style={[styles.container, { backgroundColor: colors.bgDark }]}>
-        <View style={styles.permissionContainer}>
-          <View style={styles.permissionHeader}>
-            <View style={styles.iconContainer}>
-              <Ionicons name="shield-checkmark" size={64} color={colors.purple} />
-            </View>
-            <Text style={styles.permissionTitle}>Enable Key Features</Text>
-            <Text style={styles.permissionSubtitle}>
-              To give you the best movie experience, we need access to:
-            </Text>
-          </View>
+  // if (showPermissions) {
+  //   return (
+  //     <View style={[styles.container, { backgroundColor: colors.bgDark }]}>
+  //       <View style={styles.permissionContainer}>
+  //         <View style={styles.permissionHeader}>
+  //           <View style={styles.iconContainer}>
+  //             <Ionicons name="shield-checkmark" size={64} color={colors.purple} />
+  //           </View>
+  //           <Text style={styles.permissionTitle}>Enable Key Features</Text>
+  //           <Text style={styles.permissionSubtitle}>
+  //             To give you the best movie experience, we need access to:
+  //           </Text>
+  //         </View>
 
-          <View style={styles.permissionList}>
-            {/* Camera Permission */}
-            <View style={styles.permissionItem}>
-              <View style={styles.permissionIcon}>
-                <Ionicons
-                  name={
-                    permissionStatus.camera === 'granted'
-                      ? 'checkmark-circle'
-                      : permissionStatus.camera === 'denied'
-                        ? 'close-circle'
-                        : 'camera'
-                  }
-                  size={32}
-                  color={
-                    permissionStatus.camera === 'granted'
-                      ? '#4CAF50'
-                      : permissionStatus.camera === 'denied'
-                        ? '#F44336'
-                        : colors.purple
-                  }
-                />
-              </View>
-              <View style={styles.permissionText}>
-                <Text style={styles.permissionName}>Camera</Text>
-                <Text style={styles.permissionDescription}>
-                  Scan movie posters and discover content
-                </Text>
-              </View>
-            </View>
+  //         <View style={styles.permissionList}>
+  //           {/* Camera Permission */}
+  //           <View style={styles.permissionItem}>
+  //             <View style={styles.permissionIcon}>
+  //               <Ionicons
+  //                 name={
+  //                   permissionStatus.camera === 'granted'
+  //                     ? 'checkmark-circle'
+  //                     : permissionStatus.camera === 'denied'
+  //                       ? 'close-circle'
+  //                       : 'camera'
+  //                 }
+  //                 size={32}
+  //                 color={
+  //                   permissionStatus.camera === 'granted'
+  //                     ? '#4CAF50'
+  //                     : permissionStatus.camera === 'denied'
+  //                       ? '#F44336'
+  //                       : colors.purple
+  //                 }
+  //               />
+  //             </View>
+  //             <View style={styles.permissionText}>
+  //               <Text style={styles.permissionName}>Camera</Text>
+  //               <Text style={styles.permissionDescription}>
+  //                 Scan movie posters and discover content
+  //               </Text>
+  //             </View>
+  //           </View>
 
-            {/* Microphone Permission */}
-            <View style={styles.permissionItem}>
-              <View style={styles.permissionIcon}>
-                <Ionicons
-                  name={
-                    permissionStatus.microphone === 'granted'
-                      ? 'checkmark-circle'
-                      : permissionStatus.microphone === 'denied'
-                        ? 'close-circle'
-                        : 'mic'
-                  }
-                  size={32}
-                  color={
-                    permissionStatus.microphone === 'granted'
-                      ? '#4CAF50'
-                      : permissionStatus.microphone === 'denied'
-                        ? '#F44336'
-                        : colors.purple
-                  }
-                />
-              </View>
-              <View style={styles.permissionText}>
-                <Text style={styles.permissionName}>Microphone</Text>
-                <Text style={styles.permissionDescription}>
-                  Voice search and audio features
-                </Text>
-              </View>
-            </View>
+  //           {/* Microphone Permission */}
+  //           <View style={styles.permissionItem}>
+  //             <View style={styles.permissionIcon}>
+  //               <Ionicons
+  //                 name={
+  //                   permissionStatus.microphone === 'granted'
+  //                     ? 'checkmark-circle'
+  //                     : permissionStatus.microphone === 'denied'
+  //                       ? 'close-circle'
+  //                       : 'mic'
+  //                 }
+  //                 size={32}
+  //                 color={
+  //                   permissionStatus.microphone === 'granted'
+  //                     ? '#4CAF50'
+  //                     : permissionStatus.microphone === 'denied'
+  //                       ? '#F44336'
+  //                       : colors.purple
+  //                 }
+  //               />
+  //             </View>
+  //             <View style={styles.permissionText}>
+  //               <Text style={styles.permissionName}>Microphone</Text>
+  //               <Text style={styles.permissionDescription}>
+  //                 Voice search and audio features
+  //               </Text>
+  //             </View>
+  //           </View>
 
-            {/* Location Permission */}
-            <View style={styles.permissionItem}>
-              <View style={styles.permissionIcon}>
-                <Ionicons
-                  name={
-                    permissionStatus.location === 'granted'
-                      ? 'checkmark-circle'
-                      : permissionStatus.location === 'denied'
-                        ? 'close-circle'
-                        : 'location'
-                  }
-                  size={32}
-                  color={
-                    permissionStatus.location === 'granted'
-                      ? '#4CAF50'
-                      : permissionStatus.location === 'denied'
-                        ? '#F44336'
-                        : colors.purple
-                  }
-                />
-              </View>
-              <View style={styles.permissionText}>
-                <Text style={styles.permissionName}>Location</Text>
-                <Text style={styles.permissionDescription}>
-                  Find movies showing near you
-                </Text>
-              </View>
-            </View>
-          </View>
+  //           {/* Location Permission */}
+  //           <View style={styles.permissionItem}>
+  //             <View style={styles.permissionIcon}>
+  //               <Ionicons
+  //                 name={
+  //                   permissionStatus.location === 'granted'
+  //                     ? 'checkmark-circle'
+  //                     : permissionStatus.location === 'denied'
+  //                       ? 'close-circle'
+  //                       : 'location'
+  //                 }
+  //                 size={32}
+  //                 color={
+  //                   permissionStatus.location === 'granted'
+  //                     ? '#4CAF50'
+  //                     : permissionStatus.location === 'denied'
+  //                       ? '#F44336'
+  //                       : colors.purple
+  //                 }
+  //               />
+  //             </View>
+  //             <View style={styles.permissionText}>
+  //               <Text style={styles.permissionName}>Location</Text>
+  //               <Text style={styles.permissionDescription}>
+  //                 Find movies showing near you
+  //               </Text>
+  //             </View>
+  //           </View>
+  //         </View>
 
-          <View style={styles.permissionFooter}>
-            {permissionStatus.camera === 'pending' &&
-              permissionStatus.microphone === 'pending' &&
-              permissionStatus.location === 'pending' ? (
-              <TouchableOpacity
-                onPress={requestAllPermissions}
-                disabled={isRequestingPermissions}
-              >
-                <LinearGradient
-                  colors={[colors.purple, colors.purpleDeep]}
-                  start={{ x: 0, y: 0.5 }}
-                  end={{ x: 1, y: 0.5 }}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>
-                    {isRequestingPermissions ? 'Requesting...' : 'Grant Permissions'}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity onPress={handleContinueFromPermissions}>
-                <LinearGradient
-                  colors={[colors.purple, colors.purpleDeep]}
-                  start={{ x: 0, y: 0.5 }}
-                  end={{ x: 1, y: 0.5 }}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>Continue </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            )}
+  //         <View style={styles.permissionFooter}>
+  //           {permissionStatus.camera === 'pending' &&
+  //             permissionStatus.microphone === 'pending' &&
+  //             permissionStatus.location === 'pending' ? (
+  //             <TouchableOpacity
+  //               onPress={requestAllPermissions}
+  //               disabled={isRequestingPermissions}
+  //             >
+  //               <LinearGradient
+  //                 colors={[colors.purple, colors.purpleDeep]}
+  //                 start={{ x: 0, y: 0.5 }}
+  //                 end={{ x: 1, y: 0.5 }}
+  //                 style={styles.button}
+  //               >
+  //                 <Text style={styles.buttonText}>
+  //                   {isRequestingPermissions ? 'Requesting...' : 'Grant Permissions'}
+  //                 </Text>
+  //               </LinearGradient>
+  //             </TouchableOpacity>
+  //           ) : (
+  //             <TouchableOpacity onPress={handleContinueFromPermissions}>
+  //               <LinearGradient
+  //                 colors={[colors.purple, colors.purpleDeep]}
+  //                 start={{ x: 0, y: 0.5 }}
+  //                 end={{ x: 1, y: 0.5 }}
+  //                 style={styles.button}
+  //               >
+  //                 <Text style={styles.buttonText}>Continue </Text>
+  //               </LinearGradient>
+  //             </TouchableOpacity>
+  //           )}
 
-            <Text style={styles.privacyNote}>
-              Your privacy matters. We'll only use these permissions to enhance your experience.
-            </Text>
-          </View>
-        </View>
-      </View>
-    );
-  }
+  //           <Text style={styles.privacyNote}>
+  //             Your privacy matters. We'll only use these permissions to enhance your experience.
+  //           </Text>
+  //         </View>
+  //       </View>
+  //     </View>
+  //   );
+  // }
 
   // Genre Selection Screen
   return (
